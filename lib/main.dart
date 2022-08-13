@@ -1,3 +1,4 @@
+import 'package:chat_app/view/home/chat_screen/widgets/chat_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,7 +42,7 @@ class _MyAppState extends State<MyApp> {
           home: child,
         );
       },
-      child: Container(),
+      child: ChatScreenView(),
     );
   }
 }
