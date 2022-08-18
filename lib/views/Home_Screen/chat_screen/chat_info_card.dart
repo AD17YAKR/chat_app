@@ -1,29 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:chat_app/views/Home_Screen/chat_screen/individual_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:chat_app/views/Home_Screen/chat_screen/individual_page.dart';
 import 'package:chat_app/views/Home_Screen/chat_screen/model/chat_model.dart';
 
-class ChatListCard extends StatefulWidget {
+class ChatListCard extends StatelessWidget {
   final ChatModel chat;
-
-  const ChatListCard({
-    Key? key,
+  ChatListCard({
     required this.chat,
-  }) : super(key: key);
+  });
 
-  @override
-  State<ChatListCard> createState() => ChatListCardState();
-}
-
-class ChatListCardState extends State<ChatListCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => Individual_Chat_Screen(chatModel: widget.chat));
+        Get.to(() => Individual_Chat_Screen(chatModel: chat));
       },
       child: Column(
         children: [
@@ -39,14 +33,17 @@ class ChatListCardState extends State<ChatListCard> {
               ),
             ),
             title: Text(
-              widget.chat.name,
+              chat.name,
               style: GoogleFonts.openSans(
                 fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
               ),
             ),
             trailing: Text(
-              widget.chat.time,
-              style: TextStyle(fontSize: 13.sp),
+              chat.time,
+              style: TextStyle(
+                fontSize: 13.sp,
+              ),
             ),
             subtitle: Row(
               children: [
@@ -56,7 +53,7 @@ class ChatListCardState extends State<ChatListCard> {
                 SizedBox(
                   width: 3.w,
                 ),
-                Text(widget.chat.currentMessage),
+                Text(chat.currentMessage),
               ],
             ),
           ),

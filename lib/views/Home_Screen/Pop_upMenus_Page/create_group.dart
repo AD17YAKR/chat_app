@@ -4,17 +4,17 @@ import 'package:get/get.dart';
 
 import '../../../utils/color.dart';
 import '../chat_screen/model/chat_model.dart';
-import 'create_group.dart';
 import 'widgets/button_card.dart';
 import 'widgets/contact_card.dart';
 
-class SelectContact extends StatefulWidget {
-  const SelectContact({Key? key}) : super(key: key);
+class CreateGroup extends StatefulWidget {
+  const CreateGroup({Key? key}) : super(key: key);
 
   @override
-  State<SelectContact> createState() => _SelectContactState();
+  State<CreateGroup> createState() => _CreateGroupState();
 }
 
+List<ChatModel> group = [];
 List<ChatModel> chats = [
   ChatModel(
     name: "Blank 1",
@@ -116,30 +116,60 @@ List<ChatModel> chats = [
   )
 ];
 
-class _SelectContactState extends State<SelectContact> {
+class _CreateGroupState extends State<CreateGroup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
-      body: ListView.builder(
-        itemCount: chats.length,
-        itemBuilder: (BuildContext context, int index) {
-          if (index == 0) {
-            return GestureDetector(
-              onTap: () => Get.to(() => CreateGroup()),
-              child: ButtonCard(
-                icon: Icons.group,
-                name: "Create Group",
+      body: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Column(
+            children: [
+              Container(
+                height: 75.h,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 100,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CircleAvatar();
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                      width: 10,
+                    );
+                  },
+                ),
               ),
-            );
-          }
-          if (index == 1)
-            return ButtonCard(
-              icon: Icons.person_add,
-              name: "New Contact",
-            );
-          return ContactCard(chat: chats[index]);
-        },
+              Divider(),
+            ],
+          ),
+          ListView.builder(
+            itemCount: chats.length,
+            itemBuilder: (BuildContext context, int index) {
+              if (index == 0) return Container();
+              if (index == 1) return Container();
+              return InkWell(
+                onTap: () {
+                  if (chats[index].selected == false)
+                    setState(() {
+                      chats[index].selected = true;
+                      group.add(chats[index]);
+                      // print(chats[index].selected);
+                    });
+                  // if (chats[index].selected == true)
+                  else
+                    setState(() {
+                      chats[index].selected = false;
+                      // print(chats[index].selected);
+                      group.remove(chats[index]);
+                    });
+                },
+                child: ContactCard(chat: chats[index]),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
