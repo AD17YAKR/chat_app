@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chat_app/utils/color.dart';
+import 'package:chat_app/views/Home_Screen/chat_screen/message_card.dart';
+import 'package:chat_app/views/Home_Screen/chat_screen/reply_card.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
-
 import 'package:chat_app/views/Home_Screen/chat_screen/model/chat_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,7 +30,26 @@ class _IndividualChat__ScreenState extends State<Individual_Chat_Screen> {
         child: Stack(
           // mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            ListView(),
+            ListView(
+              children: [
+                MessageCard(),
+                ReplyCard(),
+                MessageCard(),
+                ReplyCard(),
+                MessageCard(),
+                ReplyCard(),
+                MessageCard(),
+                ReplyCard(),
+                MessageCard(),
+                ReplyCard(),
+                MessageCard(),
+                ReplyCard(),
+                MessageCard(),
+                SizedBox(
+                  height: 65.h,
+                ),
+              ],
+            ),
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(

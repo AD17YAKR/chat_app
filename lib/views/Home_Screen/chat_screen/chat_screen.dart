@@ -1,5 +1,4 @@
 import 'package:chat_app/utils/color.dart';
-import 'package:chat_app/views/Home_Screen/Pop_upMenus_Page/create_group.dart';
 import 'package:chat_app/views/Home_Screen/Pop_upMenus_Page/select_contacts.dart';
 import 'package:chat_app/views/Home_Screen/chat_screen/chat_info_card.dart';
 import 'package:chat_app/views/Home_Screen/chat_screen/model/chat_model.dart';

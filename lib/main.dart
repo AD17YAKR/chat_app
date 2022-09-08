@@ -1,12 +1,15 @@
+import 'package:camera/camera.dart';
 import 'package:chat_app/utils/color.dart';
+import 'package:chat_app/utils/global_variables.dart';
 import 'package:chat_app/views/Home_Screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(MyApp());
@@ -42,7 +45,7 @@ class _MyAppState extends State<MyApp> {
               theme: ThemeData(
                 elevatedButtonTheme: ElevatedButtonThemeData(
                   style: ElevatedButton.styleFrom(
-                    primary: primaryColor,
+                    backgroundColor: primaryColor,
                   ),
                 ),
                 floatingActionButtonTheme: FloatingActionButtonThemeData(

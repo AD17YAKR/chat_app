@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import '../../../utils/color.dart';
 import '../chat_screen/model/chat_model.dart';
-import 'widgets/button_card.dart';
 import 'widgets/contact_card.dart';
 
 class CreateGroup extends StatefulWidget {
@@ -124,7 +123,7 @@ class _CreateGroupState extends State<CreateGroup> {
       body: Stack(
         clipBehavior: Clip.none,
         children: [
-          Column(
+          /* Column(
             children: [
               Container(
                 height: 75.h,
@@ -143,7 +142,7 @@ class _CreateGroupState extends State<CreateGroup> {
               ),
               Divider(),
             ],
-          ),
+          ), */
           ListView.builder(
             itemCount: chats.length,
             itemBuilder: (BuildContext context, int index) {
@@ -155,7 +154,6 @@ class _CreateGroupState extends State<CreateGroup> {
                     setState(() {
                       chats[index].selected = true;
                       group.add(chats[index]);
-                      // print(chats[index].selected);
                     });
                   // if (chats[index].selected == true)
                   else

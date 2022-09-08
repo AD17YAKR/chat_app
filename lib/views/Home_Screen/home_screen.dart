@@ -2,7 +2,7 @@ import 'package:chat_app/views/Home_Screen/chat_screen/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../call_screen/call_screen.dart';
+import 'call_screen/call_screen.dart';
 import '../status_screen/status_screen.dart';
 
 class Home_Screen extends StatefulWidget {
@@ -15,7 +15,7 @@ class Home_Screen extends StatefulWidget {
 class _Home_ScreenState extends State<Home_Screen>
     with SingleTickerProviderStateMixin {
   TabController? _controller;
- 
+
   @override
   void initState() {
     super.initState();
@@ -64,9 +64,9 @@ class _Home_ScreenState extends State<Home_Screen>
           labelColor: Colors.white,
           controller: _controller,
           tabs: [
-            Tab(
+            /*  Tab(
               icon: Icon(Icons.camera_alt),
-            ),
+            ), */
             Tab(
               text: "Chats",
             ),
@@ -82,7 +82,7 @@ class _Home_ScreenState extends State<Home_Screen>
       body: TabBarView(
         controller: _controller,
         children: [
-          Text("Camera"),
+          // CameraPage(),
           Chat_Screen(),
           Status_screen(),
           Call_screen(),
